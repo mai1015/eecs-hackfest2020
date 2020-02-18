@@ -9,6 +9,7 @@
     "antd": "^3.26.11",
     "echarts": "^4.6.0",
     "echarts-for-react": "^2.0.15-beta.1",
+    "echarts-gl": "^1.1.1",
     "node-sass": "^4.13.1",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
