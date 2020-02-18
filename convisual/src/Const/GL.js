@@ -4,6 +4,7 @@ const gloption = {
     geo3D: {
         map: 'china',
         shading: 'lambert',
+        
         light: {
             main: {
                 intensity: 5,
@@ -22,9 +23,12 @@ const gloption = {
         },
         viewControl: {
             distance: 75,
+            alpha: 30,
+            beta: 3,
+            animation:true,
         },
         groundPlane: {
-            show: true,
+            show: false,
             color: '#222'
         },
         postEffect: {
@@ -70,8 +74,11 @@ const gloption = {
     series: [{
         type: 'bar3D',
         coordinateSystem: 'geo3D',
-        shading: 'realistic',
+        shading: 'lambert',
         barSize: 0.1,
+        data:[{name:'1',
+                value:[112.54,37.86,200]
+    }],
         minHeight: 0.2,
         silent: true,
         itemStyle: {
