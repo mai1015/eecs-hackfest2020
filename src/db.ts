@@ -1,17 +1,21 @@
 import * as sqlite from 'sqlite'
+import * as path from 'path';
 
-let db = null;
+const dbPath = path.resolve(__dirname, '../db/data.sqlite');
+let db:sqlite.Database = null;
 
-async function getDB() {
-    if (!db) {
-        return await initDB();
-    }
+function getDB(): sqlite.Database {
+    console.assert(db, 'db not initialized');
     return db;
 }
 
-async function initDB() {
-    db = await sqlite.open('../db/data.sqlite');
-    return db;
+function initDB() {
+    return new Promise<sqlite.Database>(resolve => {
+        sqlite.open(dbPath).then(cdb => {
+            db = cdb;
+            resolve(db);
+        })
+    });
 }
 
-export default { initDB, getDB};
+export { initDB, getDB };
