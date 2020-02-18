@@ -21,22 +21,22 @@ class Navbar extends React.Component {
         <Menu mode="horizontal">
           <Menu.Item key="Main">
             <Link to="/">
-              <a>Main</a>
+              Main
             </Link>
           </Menu.Item>
           <Menu.Item key="Map">
             <Link to="/map">
-              <a>Map</a>
+              Map
             </Link>
           </Menu.Item>
           <Menu.Item key="Advice">
             <Link to="/advice">
-              <a>Advice</a>
+              Advice
             </Link>
           </Menu.Item>
           <Menu.Item key="News">
             <Link to="/news">
-              <a>News</a>
+              News
             </Link>
           </Menu.Item>
         </Menu>

@@ -2,7 +2,7 @@
 const gloption = {
     backgroundColor: '#cdcfd5',
     geo3D: {
-        map: 'world',
+        map: 'china',
         shading: 'lambert',
         light: {
             main: {
@@ -21,13 +21,11 @@ const gloption = {
             }
         },
         viewControl: {
-            distance: 50,
-            panMouseButton: 'left',
-            rotateMouseButton: 'right'
+            distance: 75,
         },
         groundPlane: {
             show: true,
-            color: '#999'
+            color: '#222'
         },
         postEffect: {
             enable: true,
@@ -50,6 +48,9 @@ const gloption = {
             enable: true
         },
         itemStyle: {
+            borderWidth: 1,
+
+
         },
 
         regionHeight: 2
@@ -69,7 +70,7 @@ const gloption = {
     series: [{
         type: 'bar3D',
         coordinateSystem: 'geo3D',
-        shading: 'lambert',
+        shading: 'realistic',
         barSize: 0.1,
         minHeight: 0.2,
         silent: true,
