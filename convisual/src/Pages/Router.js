@@ -8,9 +8,10 @@ import Advice from './Advice'
 function MyRouter() {
     return(
         <Switch>
-            <Main/>
-            <Map/>
-            <News/>
+            <Route path="/" exact component={Main} />
+            <Route path="/map" exact component={Map}/>
+            <Route path="/news" exact component={News} />
+            <Route path="/advice" exact component={Advice} />
             <Advice/>
         </Switch>
 

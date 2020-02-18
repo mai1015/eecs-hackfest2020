@@ -5,6 +5,7 @@ class Advice extends React.Component {
     render(){
         return(
             <div>
+                this is advice
                 </div>
         )
     }

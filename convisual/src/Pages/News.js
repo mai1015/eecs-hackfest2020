@@ -5,6 +5,7 @@ class News extends React.Component {
     render(){
         return(
             <div>
+                this is news
                 </div>
         )
     }
