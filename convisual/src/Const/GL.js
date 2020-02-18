@@ -65,6 +65,7 @@ const gloption = {
             colorAlpha: 0
         }
     },
+    //without data: mandatory
     series: [{
         type: 'bar3D',
         coordinateSystem: 'geo3D',

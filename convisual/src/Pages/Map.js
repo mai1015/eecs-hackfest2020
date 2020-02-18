@@ -4,11 +4,14 @@ import ReactEcharts from 'echarts-for-react';
 import consts from '../Const/Const'
 
 class Map extends React.Component {
+
+    
+
     render(){
         return(
             <div>
                 <ReactEcharts
-                    option = {this.getOption(consts.gl)}
+                    option = {consts.gl}
                 />
             </div>
         )
