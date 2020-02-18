@@ -4,9 +4,12 @@ import * as cookie from 'cookie-parser';
 import * as logger from 'morgan';
 import { initDB } from "./db";
 
-initDB().then(_r => console.log('connect db successful'));
+initDB().then(_r => {
+    console.log('connect db successful')
+});
 
 import indexRouter from './routes/index';
+import apiRouter from './routes/api';
 
 const app = express();
 
@@ -16,5 +19,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookie());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.get("/", indexRouter);
+app.use('/api', apiRouter);
+app.use("/", indexRouter);
+
 export default app;
