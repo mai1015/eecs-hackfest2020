@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0">
+
+<channel>
+  <title>WHO news</title>
+  <link>https://www.who.int/rss-feeds/news-english.xml</link>
+  <description>RSS Feeds for WHO</description>
+  <item>
+    <title>CTV health news</title>
+    <link>http://www.ctvnews.ca/rss/Health</link>
+    <description>RSS Feeds for CTV News</description>
+  </item>
+</channel>
+
+</rss>
