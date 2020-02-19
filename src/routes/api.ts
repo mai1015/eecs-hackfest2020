@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import { getDB } from "../db";
+import { getDB } from "../data/db";
 const router = Router();
 
 router.get('/country',(req, res) => {

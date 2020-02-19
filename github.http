@@ -1,0 +1,12 @@
+GET http://localhost:80/api/item?id=99
+Accept: application/json
+
+###
+GET https://api.github.com/repos/CSSEGISandData/COVID-19/commits
+Accept: application/json
+
+###
+GET https://api.github.com/repos/CSSEGISandData/COVID-19
+Accept: application/json
+
+###

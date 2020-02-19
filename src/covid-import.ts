@@ -1,7 +1,7 @@
-import {initDB} from './db';
+import {initDB} from './data/db';
 import axios from 'axios';
 
-let url = 'https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_daily_reports/02-17-2020.csv';
+let url = 'https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_daily_reports/02-18-2020.csv';
 
 interface CovState {
     country: string;

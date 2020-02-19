@@ -2,7 +2,7 @@ import * as express from 'express';
 import * as path from 'path';
 import * as cookie from 'cookie-parser';
 import * as logger from 'morgan';
-import { initDB } from "./db";
+import { initDB } from "./data/db";
 
 initDB().then(_r => {
     console.log('connect db successful')
