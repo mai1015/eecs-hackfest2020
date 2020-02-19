@@ -1,3 +1,7 @@
+body {
+    background-color:#333;
+}
+
 .Collapse_1 {
     margin:0 auto;
     margin-top: 2em;
@@ -5,7 +9,25 @@
 }
 
 .img1 {
-    
     margin-top: 1em;
-    
+    margin-left: 1em;
+    margin-right: 1em;
+    max-width: 1200px;
+    max-height: 500px;
+}
+
+.credit1{
+    color: white;
+    font-size: smaller;
+}
+
+.credit2{
+    font-size: smaller;
+    margin-top: 1em !important;
+}
+
+.card1{
+
+    margin:0 auto;
+
 }
