@@ -1,10 +1,10 @@
-
+import echarts from 'echarts'
 const gloption = {
-    backgroundColor: '#cdcfd5',
+    backgroundColor: '#222',
     geo3D: {
         map: 'na',
         shading: 'lambert',
-        
+        environment: '#333',
         light: {
             main: {
                 intensity: 5,
@@ -13,7 +13,7 @@ const gloption = {
                 alpha: 30
             },
             ambient: {
-                intensity: 0
+                intensity: 1
             },
             ambientCubemap: {
                 texture: 'data-gl/asset/canyon.hdr',
@@ -26,6 +26,8 @@ const gloption = {
             alpha: 30,
             beta: 3,
             animation:true,
+            animationDurationUpdate : 1000,
+            animationEasingUpdate : 'cubicInOut',
         },
         groundPlane: {
             show: false,
@@ -34,7 +36,8 @@ const gloption = {
         postEffect: {
             enable: true,
             bloom: {
-                enable: false
+                enable: false,
+                intensity: 0.01
             },
             SSAO: {
                 radius: 1,
@@ -43,7 +46,7 @@ const gloption = {
             },
             depthOfField: {
                 enable: false,
-                focalRange: 10,
+                focalRange: 1000,
                 blurRadius: 10,
                 fstop: 1
             }
@@ -52,8 +55,9 @@ const gloption = {
             enable: true
         },
         itemStyle: {
-            borderWidth: 1,
-
+            opacity:0.8,
+            borderWidth: 0.8,
+            borderColor: '#666'
 
         },
 
