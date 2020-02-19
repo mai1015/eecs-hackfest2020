@@ -7,12 +7,12 @@ import consts from '../Const/Const'
 import mapFetch from '../Utils/Fetcher'
 import China from 'echarts/map/json/china'
 // import China from '../Maps/china'
-import Canada from '../Maps/Canada'
+import Canada from '../Maps/newCanada'
 import USA from '../Maps/USA'
 import NorthAmerica from '../Maps/northamerica.geo'
 import usacanada from '../Maps/combined'
 //echarts.registerMap('china',china);nn
-echarts.registerMap('na',China);
+echarts.registerMap('na',Canada);
 
 
 consts.gl.geo3D.environment = new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
