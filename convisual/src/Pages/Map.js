@@ -12,7 +12,7 @@ import USA from '../Maps/USA'
 import NorthAmerica from '../Maps/northamerica.geo'
 import usacanada from '../Maps/combined'
 //echarts.registerMap('china',china);nn
-echarts.registerMap('na',Canada);
+echarts.registerMap('na',usacanada);
 
 
 consts.gl.geo3D.environment = new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
