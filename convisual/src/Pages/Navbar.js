@@ -1,5 +1,5 @@
 import React from "react";
-//import './Navbar.scss'
+import './Navbar.scss'
 import { Row, Col, Menu, Icon } from "antd";
 import { Link } from "react-router-dom";
 
@@ -18,25 +18,29 @@ class Navbar extends React.Component {
   render() {
     return (
       <div>
-        <Menu mode="horizontal">
-          <Menu.Item key="Main">
-            <Link to="/">
-              Main
+        <Menu className = 'nvbar' mode="horizontal" onClick={this.handleClick} selectedKeys={[this.state.current]} style={{ height : 70}}>
+          <Menu.Item key="Main" className = 'main'>
+            <Link className = 'text1' to="/">
+              <Icon type="home" />
+              Main Page
             </Link>
           </Menu.Item>
-          <Menu.Item key="Map">
-            <Link to="/map">
-              Map
+          <Menu.Item key="Map" className = 'map' >
+            <Link className = 'text1' to="/map">
+              <Icon type="global" />
+              Infection Map
             </Link>
           </Menu.Item>
-          <Menu.Item key="Advice">
-            <Link to="/advice">
-              Advice
+          <Menu.Item key="Advice" className = 'advice'>
+            <Link className = 'text1' to="/advice">
+            <Icon type="file-text" />
+              Details & Advice
             </Link>
           </Menu.Item>
-          <Menu.Item key="News">
-            <Link to="/news">
-              News
+          <Menu.Item key="News" className = 'news'>
+            <Link className = 'text1' to="/news">
+              <Icon type="read" />
+              Latest News
             </Link>
           </Menu.Item>
         </Menu>
