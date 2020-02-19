@@ -1,10 +1,13 @@
 import echarts from 'echarts'
 const gloption = {
     backgroundColor: '#222',
+    width:1024,
+    height:800,
     geo3D: {
-        map: 'na',
+        map: 'geo3d',
         shading: 'lambert',
         environment: '#333',
+
         light: {
             main: {
                 intensity: 5,
@@ -15,11 +18,6 @@ const gloption = {
             ambient: {
                 intensity: 1
             },
-            ambientCubemap: {
-                texture: 'data-gl/asset/canyon.hdr',
-                exposure: 1,
-                diffuseIntensity: 0.5
-            }
         },
         viewControl: {
             distance: 75,
@@ -79,7 +77,7 @@ const gloption = {
         type: 'bar3D',
         coordinateSystem: 'geo3D',
         shading: 'lambert',
-        barSize: 0.1,
+        barSize: 0.2,
         data:[{name:'1',
                 value:[112.54,37.86,200]
     }],

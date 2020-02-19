@@ -1,8 +1,8 @@
 import React from "react";
 import { Row, Col, Button } from "antd";
-// import ReactEcharts from "echarts-for-react";
-// import echart_gl from "echarts-gl";
-// import echarts from "echarts";
+import ReactEcharts from "echarts-for-react";
+import echart_gl from "echarts-gl";
+import echarts from "echarts";
 import consts from "../Const/Const";
 import mapFetch from "../Utils/Fetcher";
 import Maps from "../Maps/Map";
@@ -15,20 +15,20 @@ class Map extends React.Component {
     super(props);
     this.myRef = React.createRef();
     this.state = {
-      current:"china",
+      current:"China"
     };
   }
 
   handleClick = e => {
-    
+    const current = e.target.getAttribute("data")
     this.setState({
-      current: e.target.getAttribute("data")
+      current: current
     });
   };
-  
 
   render() {
     console.log(this.state.current);
+    echarts.registerMap(this.state.current,Maps[this.state.current]);
     return (
       <div>
         <div className="MapContainer">
@@ -59,7 +59,12 @@ class Map extends React.Component {
                 <Col span={3}> 
                   <Button block data="Oceania" onClick={e=>this.handleClick(e)}>Oceania</Button>
                   </Col>
-                <ChartContainer className = "chart"/>
+                  {/* <ReactEcharts
+                    option = {this.state.gl}
+                    style={{height:600,width:1024}}
+                    shouldSetOption={this.shouldSetOption}
+                  /> */}
+                  <ChartContainer content={this.state.current}/>
               </Row>
             </div>
            
