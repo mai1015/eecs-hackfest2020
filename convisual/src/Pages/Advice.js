@@ -32,41 +32,42 @@ class Advice extends React.Component {
                 </Collapse>
                
 
-                <Card className = 'card1' title="What can I do to protect myself?" style={{ width: 1400 }} extra={<a href="#https://www.who.int/news-room/q-a-detail/q-a-coronaviruses">More</a>} >
+                <Card className = 'card1' title="What can I do to protect myself?" style={{ width: 1400}} extra={<a href="#https://www.who.int/news-room/q-a-detail/q-a-coronaviruses">More</a>} >
                 
-                <div >
+                <div>
                 <Row type="flex" justify="center" align="middle">
                     <Col span={5}>
-                        <Card title="Wash your hands frequently" style={{ width: 250,height:400 }}>
+                        <Card title="Wash your hands frequently" style={{ width: 240,height:400 }}>
                             <img src={wh} style={{ width: 150}}/>
-                            <p>Wash your hands frequently with soap and water or use an alcohol-based hand rub if your hands are not visibly dirty.</p>
+                            <p className = 'textspace'>Wash your hands frequently with soap and water or use an alcohol-based hand rub if your hands are not visibly dirty.</p>
                         </Card>
                     </Col>
 
                     <Col span={5}>
-                    <Card title="Maintain social distancing" style={{ width: 250, height:400 }}>
+                    <Card title="Maintain social distancing" style={{ width: 240, height:400 }}>
                             <img src={pp} style={{ width: 150}}/>
-                    <p>Maintain at least 1 metre (3 feet) distance between yourself and other people, particularly those who are coughing, sneezing and have a fever.</p>
+                            <p className = 'textspace'>Maintain at least 1 metre (3 feet) distance between yourself and other people, particularly those who are coughing, sneezing and have a fever.</p>
                     
                     </Card>
                     </Col>
 
                     <Col span={5}>
-                    <Card title="Practice respiratory hygiene" style={{ width: 250, height:400 }}>
+                    <Card title="Practice respiratory hygiene" style={{ width: 240, height:400 }}>
                             <img src={m} style={{ width: 150}}/>
-                    <p>When coughing and sneezing, cover mouth and nose with flexed elbow or tissue – discard tissue immediately into a closed bin and clean your hands with alcohol-based hand rub or soap and water.</p>
+                            <p className = 'textspace'>When coughing and sneezing, cover mouth and nose with flexed elbow or tissue – discard tissue immediately into a closed bin and clean your hands with alcohol-based hand rub or soap and water.</p>
                     
                     </Card>
                     </Col>
 
                     <Col span={5}>
-                    <Card title="Avoid undercooked food" style={{ width: 250, height:400 }}>
-                    <img src={meat} style={{ width: 150}}/>
-                    <p>Handle raw meat, milk or animal organs with care, to avoid cross-contamination with uncooked foods, as per good food safety practices.</p>
+                    <Card title="Avoid undercooked food" style={{ width: 240, height:400 }}>
+                            <img src={meat} style={{ width: 150}}/>
+                            <p className = 'textspace'>Handle raw meat, milk or animal organs with care, to avoid cross-contamination with uncooked foods, as per good food safety practices.</p>
 
                     </Card>
                     </Col>
                 </Row>
+                
                 </div>
 
                 <text className = 'credit2'> © 2020 World Health Organization </text>
