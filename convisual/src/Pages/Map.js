@@ -10,7 +10,7 @@ import China from 'echarts/map/json/china'
 import Canada from '../Maps/newCanada'
 import USA from '../Maps/USA'
 import NorthAmerica from '../Maps/northamerica.geo'
-import usacanada from '../Maps/combined'
+import usacanada from '../Maps/usacanada'
 //echarts.registerMap('china',china);nn
 echarts.registerMap('na',usacanada);
 
