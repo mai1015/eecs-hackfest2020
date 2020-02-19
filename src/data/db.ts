@@ -1,7 +1,7 @@
 import * as sqlite from 'sqlite'
 import * as path from 'path';
 
-const dbPath = path.resolve(__dirname, '../db/data.sqlite');
+const dbPath = path.resolve(__dirname, '../../db/data.sqlite');
 let db:sqlite.Database = null;
 
 function getDB(): sqlite.Database {

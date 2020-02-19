@@ -1,3 +1,3 @@
 export default interface Importer<T> {
-    getData(): Promise<T[]>;
+    getData(p?: string): Promise<T[]>;
 }
