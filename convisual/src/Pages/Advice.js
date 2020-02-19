@@ -31,15 +31,15 @@ class Advice extends React.Component {
                
 
                 <div>
-                <Row>
-                    <Col span={6} order={4}>
+                <Row type="flex" justify="center" align="middle">
+                    <Col span={4}>
                         <Card title="Wash your hands frequently" style={{ width: 300,height:400 }}>
                             <img src={wh} style={{ width: 150}}/>
                             <p>Wash your hands frequently with soap and water or use an alcohol-based hand rub if your hands are not visibly dirty.</p>
                         </Card>
                     </Col>
 
-                    <Col span={6} order={4}>
+                    <Col span={4}>
                     <Card title="Maintain social distancing" style={{ width: 300, height:400 }}>
                             <img src={pp} style={{ width: 150}}/>
                     <p>Maintain at least 1 metre (3 feet) distance between yourself and other people, particularly those who are coughing, sneezing and have a fever.</p>
@@ -47,7 +47,7 @@ class Advice extends React.Component {
                     </Card>
                     </Col>
 
-                    <Col span={6} order={4}>
+                    <Col span={4}>
                     <Card title="Practice respiratory hygiene" style={{ width: 300, height:400 }}>
                             <img src={m} style={{ width: 150}}/>
                     <p>When coughing and sneezing, cover mouth and nose with flexed elbow or tissue – discard tissue immediately into a closed bin and clean your hands with alcohol-based hand rub or soap and water.</p>
@@ -55,7 +55,7 @@ class Advice extends React.Component {
                     </Card>
                     </Col>
 
-                    <Col span={6} order={4}>
+                    <Col span={4}>
                     <Card title="Avoid consumption undercooked animal products" style={{ width: 300, height:400 }}>
                     <img src={meat} style={{ width: 150}}/>
                     <p>Handle raw meat, milk or animal organs with care, to avoid cross-contamination with uncooked foods, as per good food safety practices.</p>

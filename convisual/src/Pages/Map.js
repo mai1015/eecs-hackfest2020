@@ -5,9 +5,15 @@ import echart_gl from 'echarts-gl';
 import echarts from 'echarts'
 import consts from '../Const/Const'
 import mapFetch from '../Utils/Fetcher'
-// import china from 'echarts/map/json/china'
-import china from '../Maps/china'
-echarts.registerMap('china',china);
+import China from 'echarts/map/json/china'
+// import China from '../Maps/china'
+import Canada from '../Maps/Canada'
+import USA from '../Maps/USA'
+import NorthAmerica from '../Maps/northamerica.geo'
+import usacanada from '../Maps/combined'
+//echarts.registerMap('china',china);nn
+echarts.registerMap('na',China);
+
 
 consts.gl.geo3D.environment = new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
     offset: 0, color: '#333' // 天空颜色
@@ -27,7 +33,7 @@ class Map extends React.Component {
             <div>
                 <ReactEcharts
                     option = {consts.gl}
-                    style={{height: '600px'}}
+                    style={{height: '800px'}}
                 />
             </div>
         )

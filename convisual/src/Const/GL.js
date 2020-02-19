@@ -2,7 +2,7 @@
 const gloption = {
     backgroundColor: '#cdcfd5',
     geo3D: {
-        map: 'china',
+        map: 'na',
         shading: 'lambert',
         
         light: {
