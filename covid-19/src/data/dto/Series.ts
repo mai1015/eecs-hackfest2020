@@ -1,7 +1,7 @@
 export interface SeriesItem {
     name: string;
-    type: string;
-    data: number[];
+    // type: string;
+    value: number[];
 }
 export interface TimeSeries {
     title?: string;
