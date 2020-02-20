@@ -18,16 +18,18 @@ const updater = (graphType, contentName, optionFile) => {
     default:
       return {};
   }
+  return null;
 };
 
 const geo3dUpdater = (contentName, optionFile) => {
   if (contentName === "UsaCanada") {
     return new Promise((resolve, reject) => {
       Promise.all([Fetcher(query.Usa), Fetcher(query.Canada)])
+        .then(r=>[r.json(), r.json()])
         .then(r => {
           let newOption = { ...optionFile };
           let newItem = newOption.series[0];
-          let newData = [...r[0], ...r[1]];
+          let newData = [...r[0].series, ...r[1].series];
 
           newItem.data = newData;
 
@@ -39,6 +41,7 @@ const geo3dUpdater = (contentName, optionFile) => {
   } else {
     return new Promise((resolve, reject) => {
       Fetcher(query[contentName])
+        .then(r=> r.json())
         .then(r => {
           let newOption = { ...optionFile };
           let newItem = newOption.series[0];
@@ -54,8 +57,8 @@ const geo3dUpdater = (contentName, optionFile) => {
   }
 };
 
-const scatterUpdater = (contentName, optionFile) => {};
+const scatterUpdater = (contentName, optionFile) => {return new Promise(resolve => resolve(consts.scatter))};
 
-const axisUpdater = (contentName, optionFile) => {};
+const axisUpdater = (contentName, optionFile) => {return new Promise(resolve => resolve(consts.axis))};
 
 export default updater;

@@ -4,6 +4,7 @@ const option = consts.fetchoption.getoptions;
 const myFetch = (query) =>{
   return new Promise((resolve, reject) => {
     fetch(query,option).then(res => {
+    	console.log(res)
       resolve(res);
     }).catch(reject)
   })

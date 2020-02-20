@@ -1,4 +1,4 @@
-const BaseQuery = "localhost:8000/"
+const BaseQuery = "http://localhost:8000/"
 
 const QuerySeries = {
     China:BaseQuery+"api/series/CN",

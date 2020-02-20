@@ -101,8 +101,24 @@ class ChartContainer extends React.Component {
     );
 
    updateData = (updater,option) =>{
+    console.log('type:'+this.props.type)
      return updater(this.props.type, this.props.content, option);
-   } 
+   }
+
+   setOpt = (opt) => {
+      const echartObj = this.getEchartsInstance();
+      // set the echart option
+      // echartObj.setOption(gl, this.props.notMerge || true, this.props.lazyUpdate || false);
+      // echartObj.setOption({}, true, false);
+      echartObj.clear();
+      echartObj.setOption(opt, true, false);
+      // set loading mask
+      if (this.props.showLoading)
+        echartObj.showLoading(this.props.loadingOption || null);
+      else echartObj.hideLoading();
+
+      return echartObj;
+   }
 
   // render the dom
   renderEchartDom = () => {
@@ -115,24 +131,10 @@ class ChartContainer extends React.Component {
       opts = {...this.props.options}
 
     }
-
-    opts = this.updateData(updater,opts)
-    
     console.log(this.props);
 
-    const echartObj = this.getEchartsInstance();
-
-    // set the echart option
-    // echartObj.setOption(gl, this.props.notMerge || true, this.props.lazyUpdate || false);
-    // echartObj.setOption({}, true, false);
-    echartObj.clear();
-    echartObj.setOption(opts, true, false);
-    // set loading mask
-    if (this.props.showLoading)
-      echartObj.showLoading(this.props.loadingOption || null);
-    else echartObj.hideLoading();
-
-    return echartObj;
+    this.updateData(updater,opts).then(this.setOpt)
+    return this.setOpt(opts)
   };
 
   render() {
