@@ -7,6 +7,7 @@ import consts from "../Const/Const";
 import mapFetch from "../Utils/Fetcher";
 import Maps from "../Maps/Map";
 import PropTypes from "prop-types";
+import updater from "../Utils/DataUpdater"
 import { bind, clear } from "size-sensor";
 import "./Map.scss";
 
@@ -114,6 +115,8 @@ class ChartContainer extends React.Component {
       opts = {...this.props.options}
 
     }
+
+    opts = this.updateData(updater,opts)
     
     console.log(this.props);
 

@@ -1,8 +1,11 @@
 import consts from "../Const/Const";
 import Fetcher from "./Fetcher";
+
+
+
 const query = consts.queries;
 const updater = (graphType, contentName, optionFile) => {
-  switch (grpahType) {
+  switch (graphType) {
     case "geo3d":
       return geo3dUpdater(contentName, optionFile);
       break;
@@ -17,7 +20,7 @@ const updater = (graphType, contentName, optionFile) => {
   }
 };
 
-geo3dUpdater = (contentName, optionFile) => {
+const geo3dUpdater = (contentName, optionFile) => {
   if (contentName === "UsaCanada") {
     return new Promise((resolve, reject) => {
       Promise.all([Fetcher(query.Usa), Fetcher(query.Canada)])
@@ -51,8 +54,8 @@ geo3dUpdater = (contentName, optionFile) => {
   }
 };
 
-scatterUpdater = (contentName, optionFile) => {};
+const scatterUpdater = (contentName, optionFile) => {};
 
-axisUpdater = (contentName, optionFile) => {};
+const axisUpdater = (contentName, optionFile) => {};
 
-export default Updater;
+export default updater;
