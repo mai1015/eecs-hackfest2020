@@ -62,14 +62,14 @@ const gloption = {
         regionHeight: 2
     },
     visualMap: {
-        max: 40,
+        max: 300000,
         calculable: true,
         realtime: false,
         inRange: {
             color: ['#313695', '#4575b4', '#74add1', '#abd9e9', '#e0f3f8', '#ffffbf', '#fee090', '#fdae61', '#f46d43', '#d73027', '#a50026']
         },
         outOfRange: {
-            colorAlpha: 0
+            colorAlpha: 0.5
         }
     },
     //without data: mandatory
@@ -77,7 +77,7 @@ const gloption = {
         type: 'bar3D',
         coordinateSystem: 'geo3D',
         shading: 'lambert',
-        barSize: 0.2,
+        barSize: 1.5,
         data:[{name:'1',
                 value:[112.54,37.86,200]
     }],

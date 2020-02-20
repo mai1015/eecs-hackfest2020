@@ -6,11 +6,12 @@ import wh from '../img/wash_hands.jpg';
 import pp from '../img/people.jpg';
 import m from '../img/mask.jpg';
 import meat from '../img/meat.jpg';
-
+import QueueAnim from 'rc-queue-anim'
 class Advice extends React.Component {
     render(){
         return(
             <div>
+                 <QueueAnim delay={300} className = "queue-simple">
                 <div>
                 <img className = 'img1' src={img1}/>
                 </div>
@@ -81,7 +82,7 @@ class Advice extends React.Component {
                 </Card>
 
                 
-                
+                </QueueAnim>
             </div>
         )
     }
