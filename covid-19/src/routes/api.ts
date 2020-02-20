@@ -23,12 +23,48 @@ router.get('/province', (req, res) => {
 router.get('/latest', (req, res) => {
     const db = getDB();
     if (req.query.c) {
+        db.all(`SELECT pp.name name, pp.lat lat, pp.lng lng, confirmed, recovered, updated_at FROM ((covid_data cd
+        INNER JOIN (SELECT id, MAX(updated_at) t FROM covid_data GROUP BY country, province) late ON cd.id = late.id) rs
+        INNER JOIN (SELECT id cid, name FROM country WHERE continent='${req.query.c}') cc ON cc.cid = rs.country)
+        INNER JOIN province pp ON pp.id == province`)
+            .then(r => {
+                if (req.query.t && req.query.t === 'bar') {
+                    let ret = {
+                        names:[],
+                        series: [{
+                            name: 'Confirmed',
+                            type: 'bar',
+                            data: []
+                        }, {
+                            name: 'Cured',
+                            type: 'bar',
+                            data: []
+                        }]
+                    }
 
+                    for (let i of r) {
+                        ret.names.push(i.name)
+                        ret.series[0].data.push(i.confirmed)
+                        ret.series[1].data.push(i.recovered)
+                    }
+                    res.json(ret)
+                } else {
+                    let ret: Plot[] = []
+                    for (let i of r) {
+                        ret.push({
+                            name: i.name,
+                            value: [i.lng, i.lat, i.confirmed]
+                        })
+                    }
+                    res.json(ret)
+                }
+            })
+    } else {
+        db.all('SELECT cd.* ' +
+            'FROM covid_data cd INNER JOIN (SELECT id, MAX(updated_at) t FROM covid_data GROUP BY country, province) late ' +
+            'ON cd.id = late.id AND cd.updated_at = late.t ORDER BY cd.updated_at DESC')
+            .then(r => res.json(r))
     }
-    db.all('SELECT cd.* ' +
-        'FROM covid_data cd INNER JOIN (SELECT id, MAX(updated_at) t FROM covid_data GROUP BY country, province) late ' +
-        'ON cd.id = late.id AND cd.updated_at = late.t ORDER BY cd.updated_at DESC')
-        .then(r => res.json(r))
 });
 
 router.get('/latest/:country', (req, res) => {
