@@ -2,6 +2,8 @@ import React from "react";
 import { Row, Col, Carousel, Card } from "antd";
 import axios from "axios";
 import "./News.scss";
+import imgHolder from "../img/unknow.png";
+import QueueAnim from "rc-queue-anim";
 
 class News extends React.Component {
   state = {
@@ -17,51 +19,52 @@ class News extends React.Component {
   }
 
   render() {
-    let imgHolder = ""
     return this.state.news ? (
-      <div>
-      <Row type="flex" justify="space-between" align="middle">
-      <Col span={4}>
+        <QueueAnim delay={300} className="queue-simple">
+        <div key="ani1">
+        <Row type="flex" justify="space-between" align="middle" key="ani1">
+      
       {this.state.news.map((ele, idx) => (
+        <Col span={6}>
           <Card
-          style={{ width: "20em", height: "18em",marginRight:"2em", marginTop:"1em" }}
-          
+          style={{ width: "25em", height: "35em", marginTop:"1em", marginLeft:"1.5em"}}
           hoverable
+          extra={<a href='ele.url'>Read More</a>}
           cover={
-            <image
-              variant="top"
+            <img
+              alt="cover"
               src={
-                ele.cover === undefined
-                  ? ""
-                  : ele.cover
+                ele.cover
+                  ? ele.cover
+                  : imgHolder
               }
               onError={e => {
                 e.target.onError = null;
                 e.target.src = imgHolder;
               }}
+              style={{ maxwidth: 200, maxHeight:240 }}
             />
           }
         >
           {console.log(ele)}
           <Card.Meta
             title={ele.title}
-            extra={<a href='ele.url'>More</a>}
             description={
               <div>
                 <h4 style={{ color: "#e77641" }}>
-                  {"$" + ele.price}
                 </h4>
                 <hr />
-                <p>{ele.content}</p>
+                <p>[{ele.date}] {ele.content}</p>
               </div>
             }
           />
         </Card>
-        
+        </Col>
       ))}
-      </Col>
+      
       </Row>
       </div>
+      </QueueAnim>
     ) : (
       <div>Loading</div>
     );

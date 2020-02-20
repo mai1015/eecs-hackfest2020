@@ -9,7 +9,7 @@ class Main extends React.Component {
         return(
             <QueueAnim delay={1000} className = "queue-simple">
             <div className= "showarea" key="main1">
-
+                <div className = 'maintext1'><p>Photo by Health Issues India</p></div>
             </div>
             </QueueAnim>
         )
