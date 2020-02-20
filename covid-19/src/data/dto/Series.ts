@@ -4,6 +4,7 @@ export interface SeriesItem {
     data: number[];
 }
 export interface TimeSeries {
+    title?: string;
     time: Date[];
     series: SeriesItem[]
 }
