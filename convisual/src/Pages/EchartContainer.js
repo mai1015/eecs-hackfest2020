@@ -48,15 +48,16 @@ class ChartContainer extends React.Component {
   componentWillUnmount() {
     this.dispose();
   }
+
   dispose = () => {
     if (this.echartsElement) {
+      this.echartsLib.dispose(this.echartsElement);
       try {
         clear(this.echartsElement);
       } catch (e) {
         console.warn(e);
       }
       // dispose echarts instance
-      this.echartsLib.dispose(this.echartsElement);
     }
   };
   // switchComponent(e){

@@ -23,6 +23,8 @@ const gloption = {
             distance: 75,
             alpha: 30,
             beta: 3,
+            panMouseButton: 'left',
+            rotateMouseButton: 'right',
             animation:true,
             animationDurationUpdate : 1000,
             animationEasingUpdate : 'cubicInOut',
