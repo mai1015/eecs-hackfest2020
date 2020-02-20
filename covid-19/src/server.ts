@@ -3,7 +3,7 @@ import * as debugModule from 'debug';
 import * as http from 'http';
 
 const debug = debugModule('covid-19:server');
-const port = normalizePort(process.env.PORT || '3000');
+const port = normalizePort(process.env.PORT || '8000');
 app.set('port', port);
 
 const server = http.createServer(app);
