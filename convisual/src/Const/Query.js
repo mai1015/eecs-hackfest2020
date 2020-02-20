@@ -27,4 +27,9 @@ const QueryLatest = {
 
 }
 
-export default Query
+const Queries = {
+    QueryLatest:QueryLatest,
+    QuerySeries:QuerySeries
+}
+
+export default Queries
