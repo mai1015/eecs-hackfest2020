@@ -24,23 +24,30 @@ const updater = (graphType, contentName, optionFile) => {
 const geo3dUpdater = (contentName, optionFile) => {
   if (contentName === "UsaCanada") {
     return new Promise((resolve, reject) => {
-      Promise.all([Fetcher(query.Usa), Fetcher(query.Canada)])
-        .then(r=>[r.json(), r.json()])
-        .then(r => {
+      Promise.all([Fetcher(query.QueryLatest.Usa), Fetcher(query.QueryLatest.Canada)])
+        .then(async r => {
           let newOption = { ...optionFile };
           let newItem = newOption.series[0];
-          let newData = [...r[0].series, ...r[1].series];
+          let newData = []
+          for(let item of await r[0].json()){
+              newData.push(item)
+          }
+          for(let item of await r[1].json()){
+            newData.push(item)
+        }
+        //   let newData = [...r[0], ...r[1]];
 
           newItem.data = newData;
-
-          newOption.series[0] = newItem.data;
+          console.log("newData: $o",newData)
+          newOption.series[0].data = newItem.data;
+          console.log("newoption: $o",newOption)
           resolve(newOption);
         })
         .catch(reject);
     });
   } else {
     return new Promise((resolve, reject) => {
-      Fetcher(query[contentName])
+      Fetcher(query.QueryLatest[contentName])
         .then(r=> r.json())
         .then(r => {
           let newOption = { ...optionFile };
@@ -49,7 +56,8 @@ const geo3dUpdater = (contentName, optionFile) => {
 
           newItem.data = newData;
 
-          newOption.series[0] = newItem.data;
+          newOption.series[0].data = newItem.data;
+          
           resolve(newOption);
         })
         .catch(reject);
@@ -57,7 +65,7 @@ const geo3dUpdater = (contentName, optionFile) => {
   }
 };
 
-const scatterUpdater = (contentName, optionFile) => {return new Promise(resolve => resolve(consts.scatter))};
+const scatterUpdater = (contentName, optionFile) => {return new Promise(resolve => resolve(consts.sc))};
 
 const axisUpdater = (contentName, optionFile) => {return new Promise(resolve => resolve(consts.axis))};
 

@@ -62,7 +62,7 @@ const gloption = {
         regionHeight: 2
     },
     visualMap: {
-        max: 300000,
+        max: 200,
         calculable: true,
         realtime: false,
         inRange: {
@@ -79,9 +79,9 @@ const gloption = {
         shading: 'lambert',
         barSize: 1.5,
         data:[{name:'1',
-                value:[112.54,37.86,200]
+                value:[112.54,37.86,0]
     }],
-        minHeight: 0.2,
+        minHeight: 2,
         silent: true,
         itemStyle: {
             color: 'orange'
