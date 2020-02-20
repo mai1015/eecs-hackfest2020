@@ -1,60 +1,63 @@
-import React from 'react';
-import { Row, Col } from 'antd';
-import ReactEcharts from 'echarts-for-react';
-import echart_gl from 'echarts-gl';
-import echarts from 'echarts'
-import consts from '../Const/Const'
-import mapFetch from '../Utils/Fetcher'
-import Maps from '../Maps/Map'
-import PropTypes from 'prop-types';
-import { bind, clear } from 'size-sensor';
-import './Map.scss'
+import React from "react";
+import { Row, Col } from "antd";
+import ReactEcharts from "echarts-for-react";
+import echart_gl from "echarts-gl";
+import echarts from "echarts";
+import consts from "../Const/Const";
+import mapFetch from "../Utils/Fetcher";
+import Maps from "../Maps/Map";
+import PropTypes from "prop-types";
+import { bind, clear } from "size-sensor";
+import "./Map.scss";
 
 class ChartContainer extends React.Component {
-  constructor(props){
-    console.log(props)
-    super(props)
+  constructor(props) {
+    console.log(props);
+    super(props);
     this.echartsLib = echarts; // the echarts object.
     this.echartsElement = null; // echarts div element
-    this.echarObj = null;
-    
-    this.state = {
-      content: props.content
-    }
+    this.echartObj = null;
+    // this.state = {
+    //   content: props.content
+    // }
   }
-    // first add
-    componentDidMount() {
-      this.rerender();
-    }
+  // first add
+  componentDidMount() {
+    this.rerender();
+  }
 
-    componentWillUpdate() {
-      
-      this.rerender();
-    }
+  // componentWillUpdate() {
 
-    componentWillReceiveProps(){
-      this.rerender();
-    }
+  //   this.rerender();
+  // }
 
-    componentWillMount(){
+  componentWillReceiveProps() {
+
+    this.rerender();
+   
+  }
+
+  componentWillMount() {
+   if(this.props.type === "geo3d"){
       echarts.registerMap(this.props.content, Maps[this.props.content]);
-    }
+   }
+    
+  }
 
-
-    componentWillUnmount() {
-      this.dispose();
-    }
-    dispose = () => {
-      if (this.echartsElement) {
-        try {
-          clear(this.echartsElement);
-        } catch (e) {
-          console.warn(e);
-        }
-        // dispose echarts instance
-        this.echartsLib.dispose(this.echartsElement);
+  componentWillUnmount() {
+    this.dispose();
+  }
+  dispose = () => {
+    if (this.echartsElement) {
+      try {
+        clear(this.echartsElement);
+      } catch (e) {
+        console.warn(e);
       }
-    };
+      // dispose echarts instance
+      this.echartsLib.dispose(this.echartsElement);
+    }
+  };
   // switchComponent(e){
   //    if(e === "geo3d"){
   //      return <ReactEcharts
@@ -72,39 +75,54 @@ class ChartContainer extends React.Component {
   //   gl.geo3D.map = nextProps.content
   //   this.setState({content: nextProps.content, gl});
   // }
-  rerender(){
-         console.log(this.props.content)
-        
-         const echartObj = this.renderEchartDom();
-         if (this.echartsElement) {
-          bind(this.echartsElement, () => {
-            try {
-              echartObj.resize();
-            } catch (e) {
-              console.warn(e);
-            }
-          });
-        }
-      }
-    
-    getEchartsInstance = () => this.echartsLib.getInstanceByDom(this.echartsElement) ||
-      this.echartsLib.init(this.echartsElement, this.props.theme, this.props.opts);
+  rerender =()=> {
+    console.log(this.props.content);
 
-      // render the dom
+    const echartObj = this.renderEchartDom();
+
+    if (this.echartsElement) {
+      bind(this.echartsElement, () => {
+        try {
+          echartObj.resize();
+        } catch (e) {
+          console.warn(e);
+        }
+      });
+    }
+  }
+
+  getEchartsInstance = () =>
+    this.echartsLib.getInstanceByDom(this.echartsElement) ||
+    this.echartsLib.init(
+      this.echartsElement,
+      this.props.theme,
+      this.props.opts
+    );
+
+  // render the dom
   renderEchartDom = () => {
     // init the echart object
-    let gl = {...consts.gl}
-    gl.geo3D.map = this.props.content
-    console.log(this.props)
+    let opts = {};
+    if(this.props.type==="geo3d"){
+       opts = { ...this.props.options };
+       opts.geo3D.map = this.props.content;
+    }else{
+      opts = {...this.props.options}
+
+    }
     
+    console.log(this.props);
+
     const echartObj = this.getEchartsInstance();
-    
+
     // set the echart option
     // echartObj.setOption(gl, this.props.notMerge || true, this.props.lazyUpdate || false);
-    echartObj.setOption({}, true, false);
-    echartObj.setOption(gl, true, false);
+    // echartObj.setOption({}, true, false);
+    echartObj.clear();
+    echartObj.setOption(opts, true, false);
     // set loading mask
-    if (this.props.showLoading) echartObj.showLoading(this.props.loadingOption || null);
+    if (this.props.showLoading)
+      echartObj.showLoading(this.props.loadingOption || null);
     else echartObj.hideLoading();
 
     return echartObj;
@@ -115,16 +133,18 @@ class ChartContainer extends React.Component {
     const newStyle = {
       height: 600,
       width: 1080,
-      ...style,
+      ...style
     };
-   
+
     // for render
     return (
       <div
-        ref={(e) => { this.echartsElement = e; }}
+        ref={e => {
+          this.echartsElement = e;
+        }}
         style={newStyle}
         className={`${className}`}
-      />
+      ></div>
     );
   }
 }
@@ -136,27 +156,24 @@ ChartContainer.propTypes = {
   lazyUpdate: PropTypes.bool,
   style: PropTypes.object, // eslint-disable-line react/forbid-prop-types
   className: PropTypes.string,
-  theme: PropTypes.oneOfType([
-    PropTypes.string,
-    PropTypes.object
-  ]),
+  theme: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
   onChartReady: PropTypes.func,
   showLoading: PropTypes.bool,
   loadingOption: PropTypes.object, // eslint-disable-line react/forbid-prop-types
   onEvents: PropTypes.object, // eslint-disable-line react/forbid-prop-types
   opts: PropTypes.shape({
     devicePixelRatio: PropTypes.number,
-    renderer: PropTypes.oneOf(['canvas', 'svg']),
+    renderer: PropTypes.oneOf(["canvas", "svg"]),
     width: PropTypes.oneOfType([
       PropTypes.number,
-      PropTypes.oneOf([null, undefined, 'auto'])
+      PropTypes.oneOf([null, undefined, "auto"])
     ]),
     height: PropTypes.oneOfType([
       PropTypes.number,
-      PropTypes.oneOf([null, undefined, 'auto'])
-    ]),
+      PropTypes.oneOf([null, undefined, "auto"])
+    ])
   }),
-  shouldSetOption: PropTypes.func,
+  shouldSetOption: PropTypes.func
 };
 
 ChartContainer.defaultProps = {
@@ -164,17 +181,14 @@ ChartContainer.defaultProps = {
   notMerge: true,
   lazyUpdate: false,
   style: {},
-  className: '',
+  className: "",
   theme: null,
   onChartReady: () => {},
   showLoading: false,
   loadingOption: null,
   onEvents: {},
   opts: {},
-  shouldSetOption: () => true,
+  shouldSetOption: () => true
 };
 
 export default ChartContainer;
-
-
-

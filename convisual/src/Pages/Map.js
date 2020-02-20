@@ -27,7 +27,7 @@ class Map extends React.Component {
   };
 
   render() {
-    console.log(this.state.current);
+    console.log("tets"+consts.axis);
     echarts.registerMap(this.state.current,Maps[this.state.current]);
     return (
       <div>
@@ -64,7 +64,9 @@ class Map extends React.Component {
                     style={{height:600,width:1024}}
                     shouldSetOption={this.shouldSetOption}
                   /> */}
-                  <ChartContainer content={this.state.current}/>
+                  <ChartContainer type={"geo3d"} content={this.state.current} options={consts.gl}/>
+                  <ChartContainer type={"scatter"} content={""} options={consts.sc}/>
+                  <ChartContainer type={"axis"} content={""} options={consts.axis}/>
               </Row>
             </div>
            
