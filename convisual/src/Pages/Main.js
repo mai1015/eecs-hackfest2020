@@ -8,7 +8,7 @@ class Main extends React.Component {
     render(){
         return(
             <QueueAnim delay={300} className = "queue-simple">
-            <div className= "showarea">
+            <div className= "showarea" key="main1">
 
             </div>
             </QueueAnim>
