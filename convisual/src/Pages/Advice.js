@@ -12,11 +12,11 @@ class Advice extends React.Component {
   render() {
     return (
       <div>
-        <QueueAnim delay={300} className="queue-simple">
+        <QueueAnim delay={1000} className="queue-simple">
           <div key="ani1">
             <img className="img1" src={img1} />
           </div>
-          <text className="credit1">
+          <text className="credit1" key="ani2">
             Photo by Australian Department of Heath{" "}
           </text>
 
