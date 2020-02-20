@@ -1,10 +1,10 @@
 import { Database } from 'sqlite'
 import { getDB } from "../db";
 
-const cState ='SELECT * FROM COUNTRY WHERE name = ?'
-const pState = 'SELECT * FROM province WHERE cid = ? AND name = ?'
-const iState = 'INSERT INTO province (name, cid) VALUES (?, ?)'
-const insertStat = 'INSERT INTO covid_data (country, province, confirmed, death, recovered, updated_at) VALUES (?, ?, ?, ?, ?, ?)'
+const cState ='SELECT * FROM COUNTRY WHERE name = ?';
+const pState = 'SELECT * FROM province WHERE cid = ? AND name = ?';
+const iState = 'INSERT INTO province (name, cid) VALUES (?, ?)';
+const insertStat = 'INSERT INTO covid_data (country, province, confirmed, death, recovered, updated_at) VALUES (?, ?, ?, ?, ?, ?)';
 
 let cCache : {[key: string]: number} = {
     'Ivory Coast': 29
@@ -40,13 +40,14 @@ export function getCov() {
 }
 
 export function saveCov(data: CovStateDTO[]): Promise<number> {
-    return new Promise<number>(async (resolve, reject) => {
+    return new Promise<number>(async (resolve) => {
         const db = getDB()
         const cS = await db.prepare(cState);
         const pS = await db.prepare(pState);
         const ipS = await db.prepare(iState);
         const iS = await db.prepare(insertStat)
 
+        let count = 0;
         for (let d of data) {
             let c = -1, p: number | null = -1;
             if (cCache.hasOwnProperty(d.country))
@@ -85,10 +86,12 @@ export function saveCov(data: CovStateDTO[]): Promise<number> {
 
             await iS.run(c, p, d.confirmed, d.deaths, d.recovered, d.lastUpdate.toISOString()).then(r => {
                 console.log('inserted '+ r.lastID + ': ' + d.state);
+                count++;
             }).catch(r => {
                 console.log(r);
                 console.log(d);
             });
         }
+        resolve(count)
     });
 }
