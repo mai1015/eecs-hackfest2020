@@ -64,7 +64,7 @@ class Map extends React.Component {
                     style={{height:600,width:1024}}
                     shouldSetOption={this.shouldSetOption}
                   /> */}
-                  <ChartContainer type={"geo3d"} content={this.state.current} options={consts.gl} className="3dmap" style={{height:700 }}/>
+                  <ChartContainer type={"geo3d"} content={this.state.current} options={consts.gl} className="3dmap" style={{width:1920,height:700 }}/>
                   <ChartContainer type={"scatter"} content={""} options={consts.sc} className="scattermap" style={{ width: 600, height:500 }}/>
                   <ChartContainer type={"axis"} content={""} options={consts.axis} className="axismap" style={{ width: 500, height:500 }}/>
               </Row>
