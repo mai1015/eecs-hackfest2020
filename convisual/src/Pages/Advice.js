@@ -6,16 +6,15 @@ import wh from '../img/wash_hands.jpg';
 import pp from '../img/people.jpg';
 import m from '../img/mask.jpg';
 import meat from '../img/meat.jpg';
-import QueueAnim from 'rc-queue-anim'
+
 class Advice extends React.Component {
     render(){
         return(
             <div>
-                 <QueueAnim delay={300} className = "queue-simple">
                 <div>
-                <img className = 'img1' src={img1}/>
+                <img className = 'img1 key' src={img1}/>
                 </div>
-                <text className = 'credit1'>Photo by Australian Department of Heath </text>
+                <text className = 'credit1 key'>Photo by Australian Department of Heath </text>
 
                 <Collapse className = 'Collapse_1' defaultActiveKey={['1']} style={{ width: 1200}}>
                     <Collapse.Panel header="What is a coronavirus?" key="1">
@@ -39,7 +38,7 @@ class Advice extends React.Component {
                 </Collapse>
                
 
-                <Card className = 'card1' title="What can I do to protect myself?" style={{ width: 1200}} extra={<a href="#https://www.who.int/news-room/q-a-detail/q-a-coronaviruses">More</a>} >
+                <Card className = 'card1 key' title="What can I do to protect myself?" style={{ width: 1200}} extra={<a href="#https://www.who.int/news-room/q-a-detail/q-a-coronaviruses">More</a>} >
                 
                 <div>
                 <Row type="flex" justify="space-between" align="middle">
@@ -82,7 +81,7 @@ class Advice extends React.Component {
                 </Card>
 
                 
-                </QueueAnim>
+                
             </div>
         )
     }
