@@ -5,8 +5,8 @@ import Africa from '../Maps/africa.geo'
 import Europe from '../Maps/europe.geo'
 import SouthAmerica from '../Maps/south-america.geo'
 import Oceania from '../Maps/oceania.geo'
-import China from 'echarts/map/json/china'
-// import China from './china'
+// import China from 'echarts/map/json/china'
+import China from './china'
 
 export default {
     NorthAmerica:NorthAmerica,

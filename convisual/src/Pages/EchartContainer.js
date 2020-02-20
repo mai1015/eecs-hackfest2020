@@ -99,6 +99,10 @@ class ChartContainer extends React.Component {
       this.props.opts
     );
 
+   updateData = (updater,option) =>{
+     return updater(this.props.type, this.props.content, option);
+   } 
+
   // render the dom
   renderEchartDom = () => {
     // init the echart object
