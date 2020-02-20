@@ -27,7 +27,7 @@ class News extends React.Component {
       {this.state.news.map((ele, idx) => (
         <Col span={6}>
           <Card
-          style={{ width: "25em", height: "35em", marginTop:"1em", marginLeft:"1.5em"}}
+          style={{ width: "25em", height: "35em", marginTop:"4em", marginLeft:"1.5em"}}
           hoverable
           extra={<a href='ele.url'>Read More</a>}
           cover={
